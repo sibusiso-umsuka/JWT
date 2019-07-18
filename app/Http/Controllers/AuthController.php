@@ -7,6 +7,9 @@ use App\Http\Controllers\Controller;
 
 class AuthController extends Controller
 {
+
+    protected $redirectTo = '/home';
+
     /**
      * Create a new AuthController instance.
      *
@@ -15,6 +18,7 @@ class AuthController extends Controller
     public function __construct()
     {
         $this->middleware('auth:api', ['except' => ['login']]);
+        return auth()->shoulduse('api');
     }
 
     /**
